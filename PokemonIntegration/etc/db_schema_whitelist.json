@@ -1,0 +1,17 @@
+{
+    "cepd_pokemon_info": {
+        "column": {
+            "id": true,
+            "pokemon_id": true,
+            "name": true,
+            "image_url": true
+        },
+        "index": {
+            "CEPD_POKEMON_INFO_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CEPD_POKEMON_INFO_POKEMON_ID": true
+        }
+    }
+}

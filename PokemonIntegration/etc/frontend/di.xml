@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="Cepd\PokemonIntegration\Plugin\AddPokemonImage" type="Cepd\PokemonIntegration\Plugin\AddPokemonImage"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="Cepd\PokemonIntegration\Plugin\ModifyCategoryPage" type="Cepd\PokemonIntegration\Plugin\ModifyCategoryPage"/>
+    </type>
+</config>

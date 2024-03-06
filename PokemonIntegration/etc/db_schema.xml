@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cepd_pokemon_info"  resource="default" engine="innodb" comment="Pokemon Info Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Pokemon Entity ID"/>
+        <column xsi:type="varchar" name="pokemon_id" length="255" nullable="false" comment="Pokemon ID"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="true" comment="Pokemon Name"/>
+        <column xsi:type="varchar" name="image_url" nullable="true" comment="Pokemon Image Url"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CEPD_POKEMON_INFO_POKEMON_ID">
+            <column name="pokemon_id"/>
+        </constraint>
+        <index referenceId="CEPD_POKEMON_INFO_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

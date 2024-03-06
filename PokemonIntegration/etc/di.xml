@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Cepd\PokemonIntegration\Api\Data\PokemonInfoInterface" type="Cepd\PokemonIntegration\Model\Data\PokemonInfo"/>
+    <preference for="Cepd\PokemonIntegration\Api\PokemonInfoRepositoryInterface" type="Cepd\PokemonIntegration\Model\PokemonInfoRepository"/>
+    <preference for="Cepd\PokemonIntegration\Api\Service\GetProductPokemonInfoInterface" type="Cepd\PokemonIntegration\Service\GetProductPokemonInfo"/>
+
+    <preference for="Cepd\PokemonIntegration\Api\PokemonApiInterface" type="Cepd\PokemonIntegration\Model\PokemonApi"/>
+    <preference for="Cepd\PokemonIntegration\Api\PokemonManagementInterface" type="Cepd\PokemonIntegration\Model\PokemonManagement"/>
+
+    <virtualType name="Cepd\PokemonIntegration\Logger\Handler\DebugHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/pokemon/debug.log</argument>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Cepd\PokemonIntegration\Logger\DebugLogger" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Pokemon Api Debug Logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Cepd\PokemonIntegration\Logger\Handler\DebugHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Cepd\PokemonIntegration\Model\PokemonManagement">
+        <arguments>
+            <argument name="logger" xsi:type="object">Cepd\PokemonIntegration\Logger\DebugLogger</argument>
+        </arguments>
+    </type>
+</config>
